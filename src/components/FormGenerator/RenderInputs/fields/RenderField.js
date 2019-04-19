@@ -1,6 +1,6 @@
 import React from "react";
-import {Field} from "formik";
-import {generateName} from "../../../helpers";
+import {Field} from "formik/dist/index";
+import {generateName} from "../../../../helpers";
 
 const RenderField = ({props, prefix}) => {
     return (

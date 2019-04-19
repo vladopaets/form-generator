@@ -1,7 +1,7 @@
 import React from "react";
 
-import RenderRadioFields from './RenderRadioFields';
-import RenderField from './RenderField';
+import RenderRadioFields from './fields/RenderRadioFields';
+import RenderField from './fields/RenderField';
 
 import {generateName} from '../../../helpers';
 
