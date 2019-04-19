@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
 import {Formik} from 'formik';
+import * as Yup from 'yup';
 import RenderInputs from './RenderInputs';
 
 import {destructureInitialData} from '../../helpers';
+
+const validationSchema = Yup.object().shape({
+    email: Yup.string()
+        .email('Invalid email')
+        .required('Required'),
+});
 
 class FormGenerator extends Component {
     render() {
@@ -18,6 +25,7 @@ class FormGenerator extends Component {
                 <Formik
                     initialValues={initialData}
                     onSubmit={onSubmit}
+                    validationSchema={validationSchema}
                     render={
                         props => (
                             <form onSubmit={props.handleSubmit}>

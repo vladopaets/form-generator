@@ -12,33 +12,36 @@ class App extends Component {
         const schema = {
             properties: {
                 email: {
-                    title: "email",
+                    title: "Your email",
+                    name: "email",
                     type: "email",
-                    widget: "email",
+                    value: ""
                 },
                 password: {
-                    title: "password",
+                    title: "Your password",
+                    name: "password",
                     type: "password",
-                    widget: "password",
-                    value: "",
+                    value: ""
                 },
                 profile: {
                     properties: {
                         name: {
-                            title: "name",
+                            title: "Your name",
+                            name: "name",
                             type: "string",
-                            widget: "string",
-                            value: "Vlad",
+                            value: ""
                         },
-                        bio: {
-                            properties: {
-                                lastname: {
-                                    title: "lastname",
-                                    type: "string",
-                                    widget: "string",
-                                    value: "Opaets",
-                                }
-                            }
+                        gender: {
+                            title: "Your gender",
+                            name: "gender",
+                            enum: ["male", "female"],
+                            enum_titles: ["Mr", "Mrs"],
+                            type: "radio"
+                        },
+                        newsletter: {
+                            title: "would you like to receive newsletters?",
+                            name: "newsletter",
+                            type: "checkbox",
                         }
                     }
                 }

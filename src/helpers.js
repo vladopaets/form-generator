@@ -14,3 +14,7 @@ export const destructureInitialData = (object) => {
 
     return result;
 };
+
+export const generateName = (prefix, name) => {
+    return prefix ? prefix + '.' + name : name
+};
