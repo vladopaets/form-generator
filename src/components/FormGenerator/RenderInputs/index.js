@@ -1,9 +1,37 @@
 import React from "react";
 
-import RenderRadioFields from './fields/RenderRadioFields';
-import RenderField from './fields/RenderField';
-
 import {generateName} from '../../../helpers';
+import {Field} from "formik";
+
+const RenderField = ({props, prefix}) => {
+    return (
+        <Field name={generateName(prefix, props.name)}>
+            {({ field, form }) => (
+                <div>
+                    <input type={props.type} {...field}/>
+                    {form.touched[field.name] && form.errors[field.name] && <div className="error">{form.errors[field.name]}</div>}
+                </div>
+            )}
+        </Field>
+    )
+};
+
+const RenderRadioFields = ({props, prefix}) => {
+    return (
+        props.enum.map((item, index) => (
+            <Field name={generateName(prefix, props.name)} key={index}>
+                {({ field, form }) => (
+                    <div>
+                        <span>{props.enum_titles[index]}</span>
+                        <input type={props.type} {...field} value={item}/>
+                        {form.touched[field.name] && form.errors[field.name] && <div className="error">{form.errors[field.name]}</div>}
+                    </div>
+                )}
+            </Field>
+        ))
+    )
+};
+
 
 const RenderInputs = ({schema, prefix = null}) => {
     const renderField = (key, props) => {
@@ -17,7 +45,7 @@ const RenderInputs = ({schema, prefix = null}) => {
                 {props.title && <label htmlFor={generateName(prefix, props.name)}>{props.title}</label>}
                 {props.type === 'radio' ?
                     <RenderRadioFields props={props} prefix={prefix}/> :
-                    <RenderField props={props} prefix={prefix}/>
+                    <RenderField props={props}  prefix={prefix}/>
                 }
             </div>
         )
