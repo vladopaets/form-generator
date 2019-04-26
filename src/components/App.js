@@ -43,6 +43,16 @@ class App extends Component {
                             title: "would you like to receive newsletters?",
                             name: "newsletter",
                             type: "checkbox",
+                        },
+                        additionalInfo: {
+                            properties: {
+                                pet: {
+                                    title: "Your pet name",
+                                    name: "pet-name",
+                                    type: "string",
+                                    value: ""
+                                }
+                            }
                         }
                     }
                 }
