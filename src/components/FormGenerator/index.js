@@ -9,6 +9,12 @@ const validationSchema = Yup.object().shape({
     email: Yup.string()
         .email('Invalid email')
         .required('Required'),
+    profile: Yup.object().shape({
+        name: Yup.string()
+            .required('Required'),
+        gender: Yup.string()
+            .required('choose, please')
+    })
 });
 
 class FormGenerator extends Component {
