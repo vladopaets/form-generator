@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import FormGenerator from './FormGenerator';
 
 import './App.css';
+import * as Yup from "yup";
 
 class App extends Component {
     onSubmit = (data) => {
@@ -49,9 +50,21 @@ class App extends Component {
             title: "Registration form"
         };
 
+        const validationSchema = Yup.object().shape({
+            email: Yup.string()
+                .email('Invalid email')
+                .required('Required'),
+            profile: Yup.object().shape({
+                name: Yup.string()
+                    .required('Required'),
+                gender: Yup.string()
+                    .required('choose, please')
+            })
+        });
+
         return (
             <div className="App">
-                <FormGenerator schema={schema} onSubmit={this.onSubmit} />
+                <FormGenerator schema={schema} validationSchema={validationSchema} onSubmit={this.onSubmit} />
             </div>
         );
     }
